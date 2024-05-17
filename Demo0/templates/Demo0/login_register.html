@@ -1,0 +1,129 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% if page == 'login' %}
+    <!-- <div class="containers">
+        <div class="layout__box">
+            <pre>Hi! this is Demo_project no: 0.
+            That the working model for login logout and register.
+            </pre>
+            <div class="layout__boxHeader">
+                <div class="layout__boxTitle">
+                    <h3>LOGIN PAGE</h3>
+                </div>
+                
+            </div>
+            <div class="layout__body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form__group form__group">
+                        <h5 >Email :</h5>
+                        <input type="email" name="email" >
+                    </div>
+                    
+                    <div class="form__group">
+                        <h5>Password :</h5>
+                        <input type="password" name="password" >
+                    </div>
+                    <span>
+                        <button class="btn btn-success" type="submit">Login</button>
+                        <a  href=""><h5>Forget Password</h5></a>
+                    </span>
+                </form>
+
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+                <span >
+                    <p>Too open account reg here.</p>
+                    <a class="btn btn-primary" href="{% url 'register' %}">REGISTER</a>
+                    
+                </span>
+            </div>   
+        </div>
+    </div> -->
+<div class="container">
+    <div class="card">
+        <div class="card card-title">LOGIN-PAGE</div>
+        <div class="card card-body md">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label>EMAIL :</label>
+                <input type="email" name="email" placeholder="ani@gmail.com" >
+
+                <label>PASSWORD :</label>
+                <input type="password" name="password">
+
+                <span>
+                    <button class="btn btn-success" type="submit">Login</button>
+                    <a  href=""><h5>Forget Password</h5></a>
+                </span>
+            </form>
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+            <span >
+                <p>Too open account reg here.</p>
+                <a class="btn btn-primary" href="{% url 'register' %}">REGISTER</a>
+                    
+            </span>
+        </div>
+    </div>
+
+</div>
+{% else %}
+
+    <!-- <div class="containers">
+        <div class="layout__box">
+            <pre>Hi! this is Demo_project no: 0...
+            That the working model for login logout and register.
+            </pre>
+            <div class="layout__boxHeader">
+                <div class="layout__boxTitle">
+                    <h3>REGISTER FORM</h3>
+                </div>
+            </div>
+            <div class="layout__body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                {% for field in form %}
+                  <div class="form__group form__group">
+                    {{field.label}}
+                  </div>  
+
+                  <div class="form__group">
+                    {{field}}
+                  </div> 
+
+                {% endfor %}
+                <button class="btn btn-success" type="submit">Register</button>
+                </form>
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+                <p>Already signed up then login here!</p>
+                <a class="btn btn-primary" href="{% url 'login' %}">login</a>
+            </div>
+        </div>
+    </div> -->
+<div class="container">
+    <div class="card">
+        <div class="card card-title">REGISTER-PAGE</div>
+        <div class="card card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <label>{{field.label}}</label>
+                {{field}}
+                {% endfor %}
+                <button class="btn btn-success" type="submit">Register</button>
+            </form>
+            <p>Already signed up then login here!</p>
+            <a class="btn btn-primary" href="{% url 'login' %}">login</a>
+        </div>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock content %}

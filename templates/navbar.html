@@ -1,0 +1,54 @@
+{% load static %}
+<header class="header__header--loggedIn">
+    <div class="container">
+        <nav class="header__menu">
+            <div>
+                <a href="{% url 'home' %}" class="header__logo"><h1>L/L/R</h1></a> 
+            </div>   
+            
+            <!-- Logged In -->
+            {% if request.user.is_authenticated %}
+            <div class="header__user">
+                    <div class="avatar avatar--medium active">
+                        <img src="{% static 'images/avatar.svg' %}" alt="">
+                    </div>
+                    <span>@{{request.user.username}}</span>
+    
+            </div>
+            <div>
+                <a href="{% url 'logout' %}"><button class="btn btn-warning">
+                    Logout</button></a>
+            
+            </div>
+
+     
+            {% else %}
+
+            <!-- Not Logged In -->
+            <div></div>
+            <div class="avatar_img">
+                <a  href="{% url 'login' %}"><img src="{% static 'images/avatar.svg' %}" />      
+                <button class="btn btn-success">Login</button></a>
+            </div>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+
+
+
+
+
+<!-- <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <!-- Navbar content 
+  </nav>
+  
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <!-- Navbar content 
+  </nav>
+  
+  <nav class="navbar" style="background-color: #e3f2fd;">
+    <!-- Navbar content
+  </nav> -->
+
